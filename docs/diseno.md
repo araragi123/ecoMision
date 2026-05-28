@@ -200,16 +200,6 @@ classDiagram
     ElementoInteractivo ..> Explorador : usa en interactuar()
 ```
 
-### Cómo leer las flechas del diagrama
-
-- `<|--` herencia ("es un"): `AnimalHerido` **es un** `ElementoInteractivo`.
-- `o--` agregación ("tiene un", débil): una `Zona` **tiene** elementos.
-- `-->` asociación ("usa un"): `EcoMision` **usa** una `Reserva`.
-- `..>` dependencia: `ElementoInteractivo` **usa** un `Explorador` como
-  parámetro en `interactuar()`.
-
----
-
 ## 4. Matriz de decisiones de diseño
 
 | Decisión | Alternativas consideradas | Decisión final | Justificación | Riesgo si se modela mal |
@@ -223,17 +213,3 @@ classDiagram
 
 ---
 
-## 5. Resumen de conceptos de POO aplicados
-
-| Concepto | Dónde está en el código |
-|---|---|
-| Abstracción | `ElementoInteractivo` define la idea general de "algo con lo que interactuar". |
-| Encapsulamiento | Atributos `private` en `Explorador`, `Zona`, etc., con getters/métodos públicos. |
-| Herencia | `AnimalHerido`, `EstacionEnergia`, ... heredan de `ElementoInteractivo`. |
-| Polimorfismo | `Zona` llama a `elemento->interactuar()` y cada objeto responde a su manera. |
-| Clase abstracta | `ElementoInteractivo` con `interactuar(...) = 0` (virtual puro). |
-| Sobreescritura | Cada clase hija reescribe `interactuar()` con `override`. |
-| Sobrecarga | `Zona::interactuarCon(int, ...)` y `Zona::interactuarCon(string, ...)`. |
-| Asociación | `EcoMision` usa `Reserva` y `Explorador`. |
-| Agregación | `Reserva` contiene `Zona`s; `Zona` contiene `ElementoInteractivo`s. |
-| `std::unordered_map` | `Reserva::zonas` (clave = código de zona). |
